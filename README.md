@@ -4,6 +4,13 @@
 Refer to branch name which contains NMl related project
 <language>-<framework>-nml-<platform>-<vendor>
 
+### Sample Applications
+
+Sample applications (iOS Native and Android Native) are available in the **main** branch under the `SampleApplication` directory:
+
+- `SampleApplication/Applitcation1-accessibility-app` — Accessibility sample app (iOS Native, Android Native)
+- `SampleApplication/Application2-analyticsx-app` — AnalyticsX sample app (iOS Native, Android Native)
+
 ### Java Appium — iOS
 
   java-appium-nml-ios-local
