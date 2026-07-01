@@ -1,0 +1,300 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.4 effective-5.10 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name Applitools_iOS
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.4
+import AVFoundation
+import Applitools_iOS_Private
+import Combine
+import CoreGraphics
+import Darwin
+import Foundation
+import KeychainAccess
+import MobileCoreServices
+import ObjectiveC
+import Swift
+import UIKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import ObjectiveC.runtime
+@objc extension UIKit.UIView {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open func applitools_findController() -> UIKit.UIViewController?
+  #endif
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open func applitools_allScrollViews() -> [UIKit.UIScrollView]
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open func applitools_isFlutterScrollView() -> Swift.Bool
+}
+@objc extension UIKit.UIScrollView {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitoolsContentOffset: Foundation.NSValue? {
+    @objc get
+    @objc set
+  }
+  #endif
+}
+public struct PartCaptureInfo {
+  public let viewportRect: CoreFoundation.CGRect
+  public let croppedRect: CoreFoundation.CGRect
+  public let partIndex: Swift.Int
+  public let scrollableFrame: CoreFoundation.CGRect
+  public let scrollView: UIKit.UIScrollView?
+}
+public enum DeviceResolution : Swift.Int, @unchecked Swift.Sendable {
+  case resolution320x568
+  case resolution320x693
+  case resolution375x667
+  case resolution375x812
+  case resolution390x844
+  case resolution393x852
+  case resolution402x874
+  case resolution414x736
+  case resolution414x896
+  case resolution428x926
+  case resolution430x932
+  case resolution440x956
+  case resolution744x1133
+  case resolution768x1024
+  case resolution810x1080
+  case resolution820x1180
+  case resolution834x1112
+  case resolution834x1194
+  case resolution1024x1366
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIApplication {
+  @objc @_Concurrency.MainActor dynamic public func takeAccessibilitySnapshot() throws -> Foundation.Data
+  @objc @_Concurrency.MainActor dynamic public func takeAccessibilitySnapshot(flatten: Swift.Bool) throws -> Foundation.Data
+  @objc @_Concurrency.MainActor @preconcurrency public static func flattenAccessibilitySnapshot(_ snapshotData: Foundation.Data) throws -> Foundation.Data
+}
+@objc extension UIKit.UIDevice {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open class func applitools_modelIdentifier() -> Swift.String
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open class func applitools_deviceName() -> Swift.String
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open class func applitools_systemString(includingBuild: Swift.Bool = false) -> Swift.String
+}
+@objc extension UIKit.UITableViewHeaderFooterView {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open func applitools_isHeader() -> Swift.Bool
+}
+@_inheritsConvenienceInitializers @objc open class ApplitoolsMetadataProvider : ObjectiveC.NSObject {
+  @objc open class func nmlVersion() -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct AccessibilityElement : Swift.Codable, Swift.Sendable, Swift.Equatable {
+  public static func == (lhs: Applitools_iOS.AccessibilityElement, rhs: Applitools_iOS.AccessibilityElement) -> Swift.Bool
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@_inheritsConvenienceInitializers @objc open class ApplitoolsKeychain : ObjectiveC.NSObject {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @Applitools_iOS.ApplitoolsKeychain.KeychainBacked open var apiKey: Swift.String? {
+    @objc get
+    @objc set
+    _modify
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @Applitools_iOS.ApplitoolsKeychain.KeychainBacked open var serverURL: Swift.String? {
+    @objc get
+    @objc set
+    _modify
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @Applitools_iOS.ApplitoolsKeychain.KeychainBacked open var proxyURL: Swift.String? {
+    @objc get
+    @objc set
+    _modify
+  }
+  #endif
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers final public class ApplitoolsFullpageScreenshotMaker : ObjectiveC.NSObject {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor final public class func screenshot(with window: UIKit.UIWindow, scrollRootElement: UIKit.UIScrollView?, topOverlap: Swift.Int, bottomOverlap: Swift.Int, maxHeight: Swift.Int, waitBeforeCapture: Swift.UInt, skipScreenshot: Swift.Bool = false, didCapturePart: ((Applitools_iOS.PartCaptureInfo) -> Swift.Void)?) async -> UIKit.UIImage?
+  #endif
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public protocol Scrollable {
+}
+extension UIKit.UIScrollView : Applitools_iOS.Scrollable {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func scrollContent(axis: UIUtilities.UIAxis = .both, overlap: CoreFoundation.CGFloat = 10, interval: Swift.UInt = 200, waitBeforeFirstScroll: Swift.Bool = false, didScroll: @escaping (UIKit.UIScrollView, @escaping (_ shouldContinue: Swift.Bool) -> ()) -> (), completion: @escaping ((any Swift.Error)?) -> ())
+  #endif
+}
+@objc public protocol Listable : Applitools_iOS.Scrollable {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc var visibleIndexPaths: [Foundation.IndexPath]? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc var firstVisibleCell: UIKit.UIView? { get }
+  #endif
+  @objc func scrollListTo(indexPath: Foundation.IndexPath)
+}
+extension UIKit.UITableView : Applitools_iOS.Listable {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public var visibleIndexPaths: [Foundation.IndexPath]? {
+    @objc get
+  }
+  #endif
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func scrollListTo(indexPath: Foundation.IndexPath)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public var firstVisibleCell: UIKit.UIView? {
+    @objc get
+  }
+  #endif
+}
+extension UIKit.UICollectionView : Applitools_iOS.Listable {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public var visibleIndexPaths: [Foundation.IndexPath]? {
+    @objc get
+  }
+  #endif
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func scrollListTo(indexPath: Foundation.IndexPath)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public var firstVisibleCell: UIKit.UIView? {
+    @objc get
+  }
+  #endif
+}
+@objc public protocol Pinnable : Applitools_iOS.Scrollable {
+  @objc var maxPinnedHeaderHeight: CoreFoundation.CGFloat { get }
+}
+extension UIKit.UITableView : Applitools_iOS.Pinnable {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public var maxPinnedHeaderHeight: CoreFoundation.CGFloat {
+    @objc get
+  }
+}
+extension UIKit.UICollectionView : Applitools_iOS.Pinnable {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public var maxPinnedHeaderHeight: CoreFoundation.CGFloat {
+    @objc get
+  }
+}
+@objc extension Foundation.URLSession {
+  @objc dynamic open class func applitools_trackSession(_ session: Foundation.URLSession)
+  @objc dynamic open class func applitools_untrackSession(_ session: Foundation.URLSession)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic open class func applitools_allSessions() -> [Foundation.URLSession]?
+  #endif
+}
+@objc @_inheritsConvenienceInitializers @objcMembers open class Demangle : ObjectiveC.NSObject {
+  @objc open class func simplify(_ mangled: Swift.String) -> [Swift.String]
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc open class func swift_demangle(_ mangled: Swift.String) -> Swift.String?
+  #endif
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension UIKit.UIWindow {
+  @objc @_Concurrency.MainActor dynamic public func captureScreenshot(with snapshotInfo: Applitools_iOS.ApplitoolsSnapshotInfo, renderingInfo: [Swift.String : Any]) async -> [Applitools_iOS.UFGCaptureScreenshotResult]
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc(applitools_statusBarHeightFor:) @_Concurrency.MainActor @preconcurrency public static func statusBarHeight(for orientation: UIKit.UIInterfaceOrientation) -> Foundation.NSNumber?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc(applitools_safeAreaInsetsFor:) @_Concurrency.MainActor @preconcurrency public static func safeAreaInsets(for orientation: UIKit.UIInterfaceOrientation) -> Foundation.NSValue?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc(applitools_resolution) @_Concurrency.MainActor @preconcurrency public static func resolution() -> Foundation.NSValue?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc(applitools_usesMinimumSafeAreas) @_Concurrency.MainActor @preconcurrency public static var usesMinimumSafeAreas: Foundation.NSNumber? {
+    @objc get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc(applitools_minimumSafeAreaInsets) @_Concurrency.MainActor @preconcurrency public static var minimumSafeAreaInsets: Foundation.NSValue? {
+    @objc get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @_Concurrency.MainActor dynamic public class func mostLikelyVisibleKeyWindow() -> UIKit.UIWindow?
+  #endif
+  @objc @_Concurrency.MainActor dynamic public func isUserWindow() -> Swift.Bool
+  @objc @_Concurrency.MainActor dynamic public func isSystem() -> Swift.Bool
+  @objc @_Concurrency.MainActor dynamic public func isVisible() -> Swift.Bool
+  @objc @_Concurrency.MainActor dynamic open func userInterfaceFrameworkName() -> Swift.String
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitools_uiOrientationName: Swift.String {
+    @objc get
+  }
+}
+@objc extension UIKit.UIWindow {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitools_visibleViewControllers: [UIKit.UIViewController] {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitools_visibleViewControllersPointers: Foundation.NSPointerArray {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitools_capturing: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitools_originalFrame: CoreFoundation.CGRect {
+    @objc get
+    @objc set
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitools_verticalScrollViews: Foundation.NSHashTable<UIKit.UIScrollView>? {
+    @objc get
+    @objc set
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitools_horizontalScrollViews: Foundation.NSHashTable<UIKit.UIScrollView>? {
+    @objc get
+    @objc set
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitools_scrollViews: Foundation.NSHashTable<UIKit.UIScrollView>? {
+    @objc get
+    @objc set
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @_Concurrency.MainActor @preconcurrency dynamic open var applitools_scrollRootElement: UIKit.UIScrollView? {
+    @objc get
+    @objc set
+  }
+  #endif
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers open class ApplitoolsSnapshotInfo : ObjectiveC.NSObject {
+  @objc final public let deviceList: [Applitools_iOS.DeviceInfo]?
+  @objc public var systemScreenshotHeuristicEnabled: Swift.Bool
+  @objc public var skipScreenshot: Swift.Bool
+  @objc public var honorsModalViews: Swift.Bool
+  @objc convenience public init(withDictionary dict: [Swift.String : Any])
+  @objc convenience public init(withAxDictionary dict: [Swift.String : Any])
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers open class UFGCommonSelector : ObjectiveC.NSObject {
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers open class UFGCaptureScreenshotResult : ObjectiveC.NSObject {
+  @objc final public let screenshot: UIKit.UIImage?
+  @objc public var screenshotURL: Foundation.URL?
+  @objc public var domCaptureURL: Foundation.URL?
+  @objc final public let selectorRegions: [Any]?
+  @objc public var error: (any Swift.Error)?
+  @objc public var deviceInfo: Applitools_iOS.DeviceInfo?
+  @objc public var accessibilitySnapshot: Foundation.Data?
+  @objc public var accessibilitySnapshotURL: Foundation.URL?
+  @objc public var accessibilitySnapshotError: (any Swift.Error)?
+  @objc public var domCapture: Foundation.Data?
+  @objc public var domCaptureError: (any Swift.Error)?
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers open class DeviceInfo : ObjectiveC.NSObject {
+  @objc final public let name: Swift.String
+  @objc deinit
+}
+extension Applitools_iOS.DeviceResolution : Swift.Equatable {}
+extension Applitools_iOS.DeviceResolution : Swift.Hashable {}
+extension Applitools_iOS.DeviceResolution : Swift.RawRepresentable {}

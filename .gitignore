@@ -1,0 +1,21 @@
+# Build artifacts
+build/
+output/
+DerivedData/
+
+# CocoaPods — run `pod install` to regenerate
+Pods/
+
+# Vendored framework zip (the unzipped Applitools_iOS.xcframework is what's
+# actually linked and IS committed; this is just a duplicate archive)
+Applitools_iOS.xcframework.zip
+
+# Unreferenced generated stub modules
+SwiftModuleStubs/
+
+# Xcode user-specific state
+xcuserdata/
+
+# macOS / tooling
+.DS_Store
+.claude/

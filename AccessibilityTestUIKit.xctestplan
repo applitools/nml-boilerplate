@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "8F5A2A10-0000-4000-8000-000000000001",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "APPLITOOLS_API_KEY",
+        "value" : "$(APPLITOOLS_API_KEY)"
+      }
+    ]
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AccessibilityTestUIKit.xcodeproj",
+        "identifier" : "BB000001000000000000009A",
+        "name" : "AccessibilityTestUIKitUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
