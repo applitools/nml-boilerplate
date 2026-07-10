@@ -1,5 +1,7 @@
 ## Native Mobile Library
 
+This is a plug-and-play repository: add your credentials to `.env` (or as environment variables) on the branch you want to run, and you're ready to go against the sample application already provided.
+
 Branches are named by test vendor/environment, then language, framework, and platform:
 
 ```
@@ -8,10 +10,10 @@ Branches are named by test vendor/environment, then language, framework, and pla
 
 ### Sample Applications
 
-Sample applications (iOS Native and Android Native) are available in the **main** branch under the `SampleApplication` directory:
+Sample applications (iOS Native and Android Native) are available in the **main** branch:
 
-- `SampleApplication/Applitcation1-accessibility-app` — Accessibility sample app (iOS Native, Android Native)
-- `SampleApplication/Application2-analyticsx-app` — AnalyticsX sample app (iOS Native, Android Native)
+- `static_instrumented_sample_application/` — ready to use as-is. These apps are already statically instrumented with the Applitools SDK, so no extra setup is needed.
+- `SampleApplication/Applitcation1-accessibility-app` and `SampleApplication/Application2-analyticsx-app` — Accessibility and AnalyticsX sample apps (iOS Native, Android Native) that must be dynamically instrumented before use. See the [iOS](https://applitools.com/docs/eyes/concepts/best-practices/native-mobile-library#ios_dynamic) and [Android](https://applitools.com/docs/eyes/concepts/best-practices/native-mobile-library#android_dynamic) dynamic instrumentation guides.
 
 ### Java Appium — iOS
 
@@ -137,24 +139,6 @@ Sample applications (iOS Native and Android Native) are available in the **main*
 
   saucelabs/typescript-wdio-appium-android-multi-device
 
-### Maestro — iOS
+### Maestro
 
-  local/maestro-ios
-
-  local/maestro-ios-multi-device
-
-  lambdatest/maestro-ios
-
-  lambdatest/maestro-ios-multi-device
-
-  perfecto/maestro-ios
-
-  perfecto/maestro-ios-multi-device
-
-  saucelabs/maestro-ios
-
-  saucelabs/maestro-ios-multi-device
-
-  browserstack/maestro-ios
-
-  browserstack/maestro-ios-multi-device
+Maestro does not support direct Eyes SDK integration or Appium, so its NML support is a workaround built on the Maestro runner rather than a native integration like the suites above.
