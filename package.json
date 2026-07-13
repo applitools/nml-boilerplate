@@ -1,5 +1,5 @@
 {
-  "name": "typescript-wdio-appium-nml-ios-lambdatest",
+  "name": "typescript-wdio-appium-nml-ios-multi-device-lambdatest",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for ios on LambdaTest (TypeScript)",
   "scripts": { "test": "wdio run ./wdio.ios.lambdatest.conf.ts" },
