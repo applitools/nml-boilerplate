@@ -1,6 +1,6 @@
 import { Eyes, Target, BatchInfo, Configuration } from '@applitools/eyes-webdriverio';
 
-describe('App NML - BrowserStack', () => {
+describe('App NML - LambdaTest', () => {
   let eyes;
 
   before(async () => {
@@ -8,14 +8,13 @@ describe('App NML - BrowserStack', () => {
     const config = new Configuration();
     config.setUseDom(true);
     config.setSendDom(true);
-    config.addMultiDeviceTarget('Galaxy S25', 'Galaxy S25 Ultra', 'Pixel 9');
     eyes.setConfiguration(config);
 
     eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
-    eyes.setBatch(new BatchInfo('TS BrowserStack | NML | Android Boilerplate | Multi Device'));
+    eyes.setBatch(new BatchInfo('JS LambdaTest | Static/Slicing Dynamic | NML | iOS Boilerplate'));
 
     // TODO: swap in your own app name/description here.
-    await eyes.open(browser, 'BrowserStack Android App', 'Android App Validation');
+    await eyes.open(browser, 'LambdaTest iOS App', 'iOS App Validation');
     console.log('Eyes open');
   });
 
