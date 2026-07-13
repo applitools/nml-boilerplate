@@ -1,5 +1,5 @@
 {
-  "name": "typescript-wdio-appium-nml-android-saucelabs",
+  "name": "typescript-wdio-appium-nml-android-multi-device-saucelabs",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for android on SauceLabs (TypeScript)",
   "scripts": { "test": "wdio run ./wdio.android.saucelabs.conf.ts" },
