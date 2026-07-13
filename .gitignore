@@ -1,7 +1,5 @@
-node_modules/
-.env
-.env.local
-logs/
-*.log
-dist/
+target/
+.idea/
+*.iml
 .DS_Store
+*.log
