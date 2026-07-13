@@ -1,4 +1,4 @@
-# java-appium-nml-ios-multi-device-browserstack
+# java-appium-nml-android-browserstack
 
 Boilerplate starter — no application is bundled. Point `APP_ID` (and, for Android, `APP_PACKAGE`/`APP_ACTIVITY`) at your own app, then adapt the test's `eyes.check()` calls to your app's own screens.
 
@@ -8,6 +8,8 @@ Boilerplate starter — no application is bundled. Point `APP_ID` (and, for Andr
 - `BROWSERSTACK_USERNAME`
 - `BROWSERSTACK_ACCESS_KEY`
 - `APP_ID`
+- `APP_PACKAGE`
+- `APP_ACTIVITY`
 - `DEVICE_NAME`
 - `PLATFORM_VERSION`
 
@@ -22,7 +24,7 @@ mvn compile exec:java
 ```
 curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
   -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
-  -F "file=@/path/to/YourApp.ipa"
+  -F "file=@/path/to/YourApp.apk"
 ```
 
 Response: `{"app_url":"bs://<app_id>"}`

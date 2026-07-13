@@ -2,8 +2,7 @@ import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.appium.Target;
 import com.applitools.eyes.config.Configuration;
-import com.applitools.eyes.visualgrid.model.IosMultiDeviceTarget;
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
@@ -12,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Boilerplate iOS test — Applitools NML (multi-device) + BrowserStack Real Device
+ * Boilerplate Android test — Applitools NML + BrowserStack Real Device
  *
  * This is a starter template: it does not ship with any application. Set APP_ID
  * (and, for Android, APP_PACKAGE / APP_ACTIVITY) to point at your own app, plus
@@ -22,15 +21,18 @@ import java.util.Map;
  * ENV VARS:
  *   APPLITOOLS_API_KEY — Applitools API key
  *   APP_ID              — your app's identifier for BrowserStack (path/URL/storage reference)
+ *   APP_PACKAGE / APP_ACTIVITY — your Android app's package/activity
  *   DEVICE_NAME / PLATFORM_VERSION — target device
  */
-public class IOSBrowserStackMultidevice_Test {
+public class AndroidBrowserStackTest {
 
     private static final String APP_ID = System.getenv("APP_ID");
+    private static final String APP_PACKAGE  = System.getenv("APP_PACKAGE");
+    private static final String APP_ACTIVITY = System.getenv("APP_ACTIVITY");
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println("Test Started — Boilerplate iOS");
+        System.out.println("Test Started — Boilerplate Android");
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
@@ -42,49 +44,50 @@ public class IOSBrowserStackMultidevice_Test {
         // ── Capabilities ────────────────────────────────────────────────────
         DesiredCapabilities capabilities = new DesiredCapabilities();
         
-        capabilities.setCapability("platformName",            "iOS");
-        capabilities.setCapability("appium:automationName",   "XCUITest");
-        capabilities.setCapability("appium:deviceName",       deviceName);
-        capabilities.setCapability("appium:platformVersion",  platformVersion);
-        capabilities.setCapability("appium:newCommandTimeout", "300");
-        capabilities.setCapability("appium:noReset",          false);
-        capabilities.setCapability("appium:app",              APP_ID);
+        capabilities.setCapability("platformName",              "Android");
+        capabilities.setCapability("appium:deviceName",         deviceName);
+        capabilities.setCapability("appium:platformVersion",    platformVersion);
+        capabilities.setCapability("appium:automationName",     "UiAutomator2");
+        capabilities.setCapability("appium:newCommandTimeout",  "300");
+        capabilities.setCapability("appium:noReset",            false);
+        capabilities.setCapability("appium:app",                APP_ID);
+        capabilities.setCapability("appium:appPackage",         APP_PACKAGE);
+        capabilities.setCapability("appium:appActivity",        APP_ACTIVITY);
 
         System.out.println("Capabilities set");
 
         // ── NML ─────────────────────────────────────────────────────────────
         Eyes.setMobileCapabilities(capabilities, apiKey);
-        capabilities.setCapability("appium:optionalIntentArguments", (Object) null);
+        capabilities.setCapability("appium:processArguments", (Object) null);
 
         // ── bstack:options ──────────────────────────────────────────────────
         Map<String, Object> bstackOptions = new HashMap<>();
         bstackOptions.put("userName",     browserStackUsername);
         bstackOptions.put("accessKey",    browserStackAccessKey);
-        bstackOptions.put("projectName",  "Applitools-iOS-NML");
-        bstackOptions.put("buildName",    "Applitools-iOS-NML-Build");
-        bstackOptions.put("sessionName",  "Applitools-iOS-NML-Test");
+        bstackOptions.put("projectName",  "Applitools-Android-NML");
+        bstackOptions.put("buildName",    "Applitools-Android-NML-Build");
+        bstackOptions.put("sessionName",  "Applitools-Android-NML-Test");
 
         capabilities.setCapability("bstack:options", bstackOptions);
 
         // ── Driver ──────────────────────────────────────────────────────────
-        IOSDriver driver = new IOSDriver(
+        AndroidDriver driver = new AndroidDriver(
                 new URL("https://hub-cloud.browserstack.com/wd/hub"),
                 capabilities
         );
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        System.out.println("IOSDriver ready");
+        System.out.println("AndroidDriver ready");
 
         // ── Eyes ────────────────────────────────────────────────────────────
         Eyes eyes = new Eyes();
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
-        config.setBatch(new BatchInfo("Java BrowserStack | NML | iOS Boilerplate | Multi Device"));
+        config.setBatch(new BatchInfo("Java BrowserStack | NML | Android Boilerplate"));
         config.setUseDom(true);
         config.setSendDom(true);
-        config.addMultiDeviceTarget(IosMultiDeviceTarget.iPhone_11_Pro(), IosMultiDeviceTarget.iPhone_13());
         eyes.setConfiguration(config);
 
         try {
@@ -92,8 +95,8 @@ public class IOSBrowserStackMultidevice_Test {
             // TODO: swap in your own app name/description here.
             eyes.open(
                     driver,
-                    "BrowserStack iOS App",
-                    "iOS App Validation"
+                    "BrowserStack Android App",
+                    "Android App Validation"
             );
             System.out.println("Eyes open");
 
