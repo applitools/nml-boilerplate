@@ -1,5 +1,5 @@
 {
-  "name": "typescript-wdio-appium-nml-ios-perfecto",
+  "name": "typescript-wdio-appium-nml-ios-multi-device-perfecto",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for ios on Perfecto (TypeScript)",
   "scripts": { "test": "wdio run ./wdio.ios.perfecto.conf.ts" },
