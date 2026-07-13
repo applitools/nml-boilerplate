@@ -1,5 +1,5 @@
 {
-  "name": "typescript-wdio-appium-nml-android-browserstack",
+  "name": "typescript-wdio-appium-nml-android-multi-device-browserstack",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for android on BrowserStack (TypeScript)",
   "scripts": { "test": "wdio run ./wdio.android.browserstack.conf.ts" },
