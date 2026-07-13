@@ -1,5 +1,5 @@
 {
-  "name": "typescript-wdio-appium-nml-android-local",
+  "name": "typescript-wdio-appium-nml-android-multi-device-local",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for android on Local (TypeScript)",
   "scripts": { "test": "wdio run ./wdio.android.local.conf.ts" },
