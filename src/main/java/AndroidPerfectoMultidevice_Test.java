@@ -2,6 +2,7 @@ import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.appium.Target;
 import com.applitools.eyes.config.Configuration;
+import com.applitools.eyes.visualgrid.model.AndroidMultiDeviceTarget;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Boilerplate Android test — Applitools NML + Perfecto Real Device
+ * Boilerplate Android test — Applitools NML (multi-device) + Perfecto Real Device
  *
  * This is a starter template: it does not ship with any application. Set APP_ID
  * (and, for Android, APP_PACKAGE / APP_ACTIVITY) to point at your own app, plus
@@ -24,7 +25,7 @@ import java.util.Map;
  *   APP_PACKAGE / APP_ACTIVITY — your Android app's package/activity
  *   DEVICE_NAME / PLATFORM_VERSION — target device
  */
-public class AndroidPerfectoTest {
+public class AndroidPerfectoMultidevice_Test {
 
     private static final String APP_ID = System.getenv("APP_ID");
     private static final String APP_PACKAGE  = System.getenv("APP_PACKAGE");
@@ -81,9 +82,10 @@ public class AndroidPerfectoTest {
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
-        config.setBatch(new BatchInfo("Java Perfecto | NML | Android Boilerplate"));
+        config.setBatch(new BatchInfo("Java Perfecto | NML | Android Boilerplate | Multi Device"));
         config.setUseDom(true);
         config.setSendDom(true);
+        config.addMultiDeviceTarget(AndroidMultiDeviceTarget.Galaxy_S25(), AndroidMultiDeviceTarget.Galaxy_S25_Ultra());
         eyes.setConfiguration(config);
 
         try {
