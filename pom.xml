@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.applitools.appium</groupId>
-    <artifactId>java-appium-nml-ios-saucelabs</artifactId>
+    <artifactId>java-appium-nml-ios-multi-device-saucelabs</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <!-- ================= PROPERTIES ================= -->
@@ -52,7 +52,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>IOSSauceLabsTest</mainClass>
+                    <mainClass>IOSSauceLabsMultidevice_Test</mainClass>
                 </configuration>
             </plugin>
 
