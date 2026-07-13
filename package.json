@@ -1,5 +1,5 @@
 {
-  "name": "javascript-wdio-appium-nml-android-local",
+  "name": "javascript-wdio-appium-nml-android-multi-device-local",
   "type": "module",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for android on Local",
