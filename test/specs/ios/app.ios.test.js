@@ -8,10 +8,11 @@ describe('App NML - LambdaTest', () => {
     const config = new Configuration();
     config.setUseDom(true);
     config.setSendDom(true);
+    config.addMultiDeviceTarget("iPhone 11 Pro", "iPhone 13");
     eyes.setConfiguration(config);
 
     eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
-    eyes.setBatch(new BatchInfo('JS LambdaTest | Static/Slicing Dynamic | NML | iOS Boilerplate'));
+    eyes.setBatch(new BatchInfo('JS LambdaTest | Static/Slicing Dynamic | NML | iOS Boilerplate | Multi Device'));
 
     // TODO: swap in your own app name/description here.
     await eyes.open(browser, 'LambdaTest iOS App', 'iOS App Validation');

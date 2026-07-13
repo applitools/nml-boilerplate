@@ -1,5 +1,5 @@
 {
-  "name": "javascript-wdio-appium-nml-ios-lambdatest",
+  "name": "javascript-wdio-appium-nml-ios-multi-device-lambdatest",
   "type": "module",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for ios on LambdaTest",
