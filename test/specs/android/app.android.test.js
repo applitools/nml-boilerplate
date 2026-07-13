@@ -8,14 +8,13 @@ describe('App NML - Local', () => {
     const config = new Configuration();
     config.setUseDom(true);
     config.setSendDom(true);
-    config.addMultiDeviceTarget("iPhone 11 Pro", "iPhone 13");
     eyes.setConfiguration(config);
 
     eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
-    eyes.setBatch(new BatchInfo('JS Local | NML | iOS Boilerplate | Multi Device'));
+    eyes.setBatch(new BatchInfo('JS Local | NML | Android Boilerplate'));
 
     // TODO: swap in your own app name/description here.
-    await eyes.open(browser, 'Local iOS App', 'iOS App Validation');
+    await eyes.open(browser, 'Local Android App', 'Android App Validation');
     console.log('Eyes open');
   });
 

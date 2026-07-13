@@ -1,10 +1,10 @@
 {
-  "name": "javascript-wdio-appium-nml-ios-multi-device-local",
+  "name": "javascript-wdio-appium-nml-android-local",
   "type": "module",
   "version": "1.0.0",
-  "description": "WDIO + Applitools NML boilerplate for ios on Local",
+  "description": "WDIO + Applitools NML boilerplate for android on Local",
   "scripts": {
-    "test": "wdio run ./wdio.ios.local.conf.js"
+    "test": "wdio run ./wdio.android.local.conf.js"
   },
   "devDependencies": {
     "@wdio/cli": "^9.29.1",
