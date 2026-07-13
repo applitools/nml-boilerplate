@@ -2,8 +2,7 @@ import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.appium.Target;
 import com.applitools.eyes.config.Configuration;
-import com.applitools.eyes.visualgrid.model.IosMultiDeviceTarget;
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
@@ -12,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Boilerplate iOS test — Applitools NML (multi-device) + SauceLabs Real Device
+ * Boilerplate Android test — Applitools NML + SauceLabs Real Device
  *
  * This is a starter template: it does not ship with any application. Set APP_ID
  * (and, for Android, APP_PACKAGE / APP_ACTIVITY) to point at your own app, plus
@@ -22,15 +21,18 @@ import java.util.Map;
  * ENV VARS:
  *   APPLITOOLS_API_KEY — Applitools API key
  *   APP_ID              — your app's identifier for SauceLabs (path/URL/storage reference)
+ *   APP_PACKAGE / APP_ACTIVITY — your Android app's package/activity
  *   DEVICE_NAME / PLATFORM_VERSION — target device
  */
-public class IOSSauceLabsMultidevice_Test {
+public class AndroidSauceLabsTest {
 
     private static final String APP_ID = System.getenv("APP_ID");
+    private static final String APP_PACKAGE  = System.getenv("APP_PACKAGE");
+    private static final String APP_ACTIVITY = System.getenv("APP_ACTIVITY");
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println("Test Started — Boilerplate iOS");
+        System.out.println("Test Started — Boilerplate Android");
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
@@ -43,49 +45,50 @@ public class IOSSauceLabsMultidevice_Test {
         // ── Capabilities ────────────────────────────────────────────────────
         DesiredCapabilities capabilities = new DesiredCapabilities();
         
-        capabilities.setCapability("platformName",            "iOS");
-        capabilities.setCapability("appium:automationName",   "XCUITest");
-        capabilities.setCapability("appium:deviceName",       deviceName);
-        capabilities.setCapability("appium:platformVersion",  platformVersion);
-        capabilities.setCapability("appium:newCommandTimeout", "300");
-        capabilities.setCapability("appium:noReset",          false);
-        capabilities.setCapability("appium:app",              APP_ID);
+        capabilities.setCapability("platformName",              "Android");
+        capabilities.setCapability("appium:deviceName",         deviceName);
+        capabilities.setCapability("appium:platformVersion",    platformVersion);
+        capabilities.setCapability("appium:automationName",     "UiAutomator2");
+        capabilities.setCapability("appium:newCommandTimeout",  "300");
+        capabilities.setCapability("appium:noReset",            false);
+        capabilities.setCapability("appium:app",                APP_ID);
+        capabilities.setCapability("appium:appPackage",         APP_PACKAGE);
+        capabilities.setCapability("appium:appActivity",        APP_ACTIVITY);
 
         System.out.println("Capabilities set");
 
         // ── NML ─────────────────────────────────────────────────────────────
         Eyes.setMobileCapabilities(capabilities, apiKey);
-        capabilities.setCapability("appium:optionalIntentArguments", (Object) null);
+        capabilities.setCapability("appium:processArguments", (Object) null);
 
         // ── sauce:options ───────────────────────────────────────────────────
         Map<String, Object> sauceOptions = new HashMap<>();
         sauceOptions.put("username",   sauceUsername);
         sauceOptions.put("accessKey",  sauceAccessKey);
-        sauceOptions.put("build",      "Applitools-iOS-NML-Build");
-        sauceOptions.put("name",       "Applitools-iOS-NML-Test");
+        sauceOptions.put("build",      "Applitools-Android-NML-Build");
+        sauceOptions.put("name",       "Applitools-Android-NML-Test");
         sauceOptions.put("appiumVersion", "latest");
 
         capabilities.setCapability("sauce:options", sauceOptions);
 
         // ── Driver ──────────────────────────────────────────────────────────
-        IOSDriver driver = new IOSDriver(
+        AndroidDriver driver = new AndroidDriver(
                 new URL("https://ondemand." + sauceRegion + ".saucelabs.com/wd/hub"),
                 capabilities
         );
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        System.out.println("IOSDriver ready");
+        System.out.println("AndroidDriver ready");
 
         // ── Eyes ────────────────────────────────────────────────────────────
         Eyes eyes = new Eyes();
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
-        config.setBatch(new BatchInfo("Java SauceLabs | NML | iOS Boilerplate | Multi Device"));
+        config.setBatch(new BatchInfo("Java SauceLabs | NML | Android Boilerplate"));
         config.setUseDom(true);
         config.setSendDom(true);
-        config.addMultiDeviceTarget(IosMultiDeviceTarget.iPhone_11_Pro(), IosMultiDeviceTarget.iPhone_13());
         eyes.setConfiguration(config);
 
         try {
@@ -93,8 +96,8 @@ public class IOSSauceLabsMultidevice_Test {
             // TODO: swap in your own app name/description here.
             eyes.open(
                     driver,
-                    "SauceLabs iOS App",
-                    "iOS App Validation"
+                    "SauceLabs Android App",
+                    "Android App Validation"
             );
             System.out.println("Eyes open");
 
