@@ -1,4 +1,4 @@
-# java-appium-nml-android-saucelabs
+# java-appium-nml-android-multi-device-saucelabs
 
 Boilerplate starter — no application is bundled. Point `APP_ID` (and, for Android, `APP_PACKAGE`/`APP_ACTIVITY`) at your own app, then adapt the test's `eyes.check()` calls to your app's own screens.
 
