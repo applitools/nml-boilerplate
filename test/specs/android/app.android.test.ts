@@ -8,14 +8,13 @@ describe('App NML - BrowserStack', () => {
     const config = new Configuration();
     config.setUseDom(true);
     config.setSendDom(true);
-    config.addMultiDeviceTarget("iPhone 11 Pro", "iPhone 13");
     eyes.setConfiguration(config);
 
     eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
-    eyes.setBatch(new BatchInfo('TS BrowserStack | NML | iOS Boilerplate | Multi Device'));
+    eyes.setBatch(new BatchInfo('TS BrowserStack | NML | Android Boilerplate'));
 
     // TODO: swap in your own app name/description here.
-    await eyes.open(browser, 'BrowserStack iOS App', 'iOS App Validation');
+    await eyes.open(browser, 'BrowserStack Android App', 'Android App Validation');
     console.log('Eyes open');
   });
 
