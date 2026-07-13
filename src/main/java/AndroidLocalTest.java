@@ -2,15 +2,14 @@ import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.appium.Target;
 import com.applitools.eyes.config.Configuration;
-import com.applitools.eyes.visualgrid.model.IosMultiDeviceTarget;
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
 import java.time.Duration;
 
 /**
- * Boilerplate iOS test — Applitools NML (multi-device) + Local Appium server
+ * Boilerplate Android test — Applitools NML + Local Appium server
  *
  * This is a starter template: it does not ship with any application. Set APP_ID
  * (and, for Android, APP_PACKAGE / APP_ACTIVITY) to point at your own app
@@ -19,15 +18,18 @@ import java.time.Duration;
  * ENV VARS:
  *   APPLITOOLS_API_KEY — Applitools API key
  *   APP_ID              — your app's identifier for Local (path/URL/storage reference)
+ *   APP_PACKAGE / APP_ACTIVITY — your Android app's package/activity
  *   DEVICE_NAME / PLATFORM_VERSION — target device
  */
-public class IOSLocalMultidevice_Test {
+public class AndroidLocalTest {
 
     private static final String APP_ID = System.getenv("APP_ID");
+    private static final String APP_PACKAGE  = System.getenv("APP_PACKAGE");
+    private static final String APP_ACTIVITY = System.getenv("APP_ACTIVITY");
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println("Test Started — Boilerplate iOS");
+        System.out.println("Test Started — Boilerplate Android");
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
@@ -37,40 +39,41 @@ public class IOSLocalMultidevice_Test {
         // ── Capabilities ────────────────────────────────────────────────────
         DesiredCapabilities capabilities = new DesiredCapabilities();
         
-        capabilities.setCapability("platformName",            "iOS");
-        capabilities.setCapability("appium:automationName",   "XCUITest");
-        capabilities.setCapability("appium:deviceName",       deviceName);
-        capabilities.setCapability("appium:platformVersion",  platformVersion);
-        capabilities.setCapability("appium:newCommandTimeout", "300");
-        capabilities.setCapability("appium:noReset",          false);
-        capabilities.setCapability("appium:app",              APP_ID);
+        capabilities.setCapability("platformName",              "Android");
+        capabilities.setCapability("appium:deviceName",         deviceName);
+        capabilities.setCapability("appium:platformVersion",    platformVersion);
+        capabilities.setCapability("appium:automationName",     "UiAutomator2");
+        capabilities.setCapability("appium:newCommandTimeout",  "300");
+        capabilities.setCapability("appium:noReset",            false);
+        capabilities.setCapability("appium:app",                APP_ID);
+        capabilities.setCapability("appium:appPackage",         APP_PACKAGE);
+        capabilities.setCapability("appium:appActivity",        APP_ACTIVITY);
 
         System.out.println("Capabilities set");
 
         // ── NML ─────────────────────────────────────────────────────────────
         // No vendor options object for a local Appium server.
         Eyes.setMobileCapabilities(capabilities, apiKey);
-        capabilities.setCapability("appium:optionalIntentArguments", (Object) null);
+        capabilities.setCapability("appium:processArguments", (Object) null);
 
         // ── Driver ──────────────────────────────────────────────────────────
-        IOSDriver driver = new IOSDriver(
+        AndroidDriver driver = new AndroidDriver(
                 new URL("http://127.0.0.1:4723/wd/hub"),
                 capabilities
         );
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        System.out.println("IOSDriver ready");
+        System.out.println("AndroidDriver ready");
 
         // ── Eyes ────────────────────────────────────────────────────────────
         Eyes eyes = new Eyes();
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
-        config.setBatch(new BatchInfo("Java Local | NML | iOS Boilerplate | Multi Device"));
+        config.setBatch(new BatchInfo("Java Local | NML | Android Boilerplate"));
         config.setUseDom(true);
         config.setSendDom(true);
-        config.addMultiDeviceTarget(IosMultiDeviceTarget.iPhone_11_Pro(), IosMultiDeviceTarget.iPhone_13());
         eyes.setConfiguration(config);
 
         try {
@@ -78,8 +81,8 @@ public class IOSLocalMultidevice_Test {
             // TODO: swap in your own app name/description here.
             eyes.open(
                     driver,
-                    "Local iOS App",
-                    "iOS App Validation"
+                    "Local Android App",
+                    "Android App Validation"
             );
             System.out.println("Eyes open");
 
