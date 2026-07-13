@@ -1,4 +1,4 @@
-# javascript-wdio-appium-nml-ios-local
+# javascript-wdio-appium-nml-ios-multi-device-local
 
 Boilerplate starter — no application is bundled. Point `APP_ID` (and, for Android, `APP_PACKAGE`/`APP_ACTIVITY`) at your own app, then adapt the test's `eyes.check()` calls to your app's own screens.
 
