@@ -1,19 +1,17 @@
 import 'dotenv/config';
-import { Eyes } from '@applitools/eyes-webdriverio';
+import { ConfigurationPlain, Eyes } from '@applitools/eyes-webdriverio';
 
-const caps = Eyes.setMobileCapabilities({
-  platformName: 'Android',
+const caps = Eyes.setMobileCapabilities<Record<string, unknown>>({
+  platformName: 'iOS',
   'appium:app': process.env.APP_ID,
-  'appium:appPackage': process.env.APP_PACKAGE,
-  'appium:appActivity': process.env.APP_ACTIVITY,
-  'appium:deviceName': process.env.DEVICE_NAME || 'Samsung Galaxy S23',
-  'appium:platformVersion': process.env.PLATFORM_VERSION || '13',
-  'appium:automationName': 'UiAutomator2',
+  'appium:deviceName': process.env.DEVICE_NAME || 'iPhone 14',
+  'appium:platformVersion': process.env.PLATFORM_VERSION || '17',
+  'appium:automationName': 'XCUITest',
   'appium:noReset': false,
   'appium:newCommandTimeout': 300,
-}, process.env.APPLITOOLS_API_KEY);
+}, process.env.APPLITOOLS_API_KEY as ConfigurationPlain);
 
-delete caps['appium:processArguments'];
+delete caps['appium:optionalIntentArguments'];
 
 caps['perfecto:options'] = {
   securityToken: process.env.PERFECTO_SECURITY_TOKEN,
@@ -21,9 +19,9 @@ caps['perfecto:options'] = {
 
 const cloudName = process.env.PERFECTO_CLOUD_NAME;
 
-export const config = {
+export const config: WebdriverIO.Config = {
 
-  specs: ['./test/specs/android/app.android.test.js'],
+  specs: ['./test/specs/ios/app.ios.test.ts'],
 
   maxInstances: 1,
 
@@ -32,7 +30,7 @@ export const config = {
   protocol: 'https',
   path: '/nexperience/perfectomobile/wd/hub',
 
-  capabilities: [caps],
+  capabilities: [caps as WebdriverIO.Capabilities],
 
   logLevel: 'info',
 
@@ -50,7 +48,7 @@ export const config = {
 
   reporters: ['spec'],
 
-  afterTest: async function (test, context, { error }) {
+  afterTest: async function (_test, _context, { error }: { error?: Error }) {
     const status = error ? 'FAILED' : 'PASSED';
     await browser.execute(`perfectomobile:status=${status}`);
   },
