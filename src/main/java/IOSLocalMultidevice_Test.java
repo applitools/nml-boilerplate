@@ -2,6 +2,7 @@ import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.appium.Target;
 import com.applitools.eyes.config.Configuration;
+import com.applitools.eyes.visualgrid.model.IosMultiDeviceTarget;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -9,7 +10,7 @@ import java.net.URL;
 import java.time.Duration;
 
 /**
- * Boilerplate iOS test — Applitools NML + Local Appium server
+ * Boilerplate iOS test — Applitools NML (multi-device) + Local Appium server
  *
  * This is a starter template: it does not ship with any application. Set APP_ID
  * (and, for Android, APP_PACKAGE / APP_ACTIVITY) to point at your own app
@@ -20,7 +21,7 @@ import java.time.Duration;
  *   APP_ID              — your app's identifier for Local (path/URL/storage reference)
  *   DEVICE_NAME / PLATFORM_VERSION — target device
  */
-public class IOSLocalTest {
+public class IOSLocalMultidevice_Test {
 
     private static final String APP_ID = System.getenv("APP_ID");
 
@@ -66,9 +67,10 @@ public class IOSLocalTest {
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
-        config.setBatch(new BatchInfo("Java Local | NML | iOS Boilerplate"));
+        config.setBatch(new BatchInfo("Java Local | NML | iOS Boilerplate | Multi Device"));
         config.setUseDom(true);
         config.setSendDom(true);
+        config.addMultiDeviceTarget(IosMultiDeviceTarget.iPhone_11_Pro(), IosMultiDeviceTarget.iPhone_13());
         eyes.setConfiguration(config);
 
         try {
