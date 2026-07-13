@@ -1,10 +1,10 @@
 {
-  "name": "javascript-wdio-appium-nml-ios-multi-device-perfecto",
+  "name": "javascript-wdio-appium-nml-android-perfecto",
   "type": "module",
   "version": "1.0.0",
-  "description": "WDIO + Applitools NML boilerplate for ios on Perfecto",
+  "description": "WDIO + Applitools NML boilerplate for android on Perfecto",
   "scripts": {
-    "test": "wdio run ./wdio.ios.perfecto.conf.js"
+    "test": "wdio run ./wdio.android.perfecto.conf.js"
   },
   "devDependencies": {
     "@wdio/cli": "^9.29.1",
