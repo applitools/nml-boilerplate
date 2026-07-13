@@ -1,4 +1,4 @@
-# java-appium-nml-android-multi-device-perfecto
+# javascript-wdio-appium-nml-ios-perfecto
 
 Boilerplate starter — no application is bundled. Point `APP_ID` (and, for Android, `APP_PACKAGE`/`APP_ACTIVITY`) at your own app, then adapt the test's `eyes.check()` calls to your app's own screens.
 
@@ -8,13 +8,11 @@ Boilerplate starter — no application is bundled. Point `APP_ID` (and, for Andr
 - `PERFECTO_CLOUD_NAME`
 - `PERFECTO_SECURITY_TOKEN`
 - `APP_ID`
-- `APP_PACKAGE`
-- `APP_ACTIVITY`
 - `DEVICE_NAME`
 - `PLATFORM_VERSION`
 
 ## Run
 
 ```
-mvn compile exec:java
+npx wdio run ./wdio.ios.perfecto.conf.js
 ```
