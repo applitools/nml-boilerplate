@@ -1,4 +1,4 @@
-# javascript-wdio-appium-nml-android-multi-device-browserstack
+# typescript-wdio-appium-nml-ios-browserstack
 
 Boilerplate starter — no application is bundled. Point `APP_ID` (and, for Android, `APP_PACKAGE`/`APP_ACTIVITY`) at your own app, then adapt the test's `eyes.check()` calls to your app's own screens.
 
@@ -8,15 +8,13 @@ Boilerplate starter — no application is bundled. Point `APP_ID` (and, for Andr
 - `BROWSERSTACK_USERNAME`
 - `BROWSERSTACK_ACCESS_KEY`
 - `APP_ID`
-- `APP_PACKAGE`
-- `APP_ACTIVITY`
 - `DEVICE_NAME`
 - `PLATFORM_VERSION`
 
 ## Run
 
 ```
-npx wdio run ./wdio.android.browserstack.conf.js
+npx wdio run ./wdio.ios.browserstack.conf.ts
 ```
 
 ## Upload application to BrowserStack
@@ -24,7 +22,7 @@ npx wdio run ./wdio.android.browserstack.conf.js
 ```
 curl -u "$BROWSERSTACK_USERNAME:$BROWSERSTACK_ACCESS_KEY" \
   -X POST "https://api-cloud.browserstack.com/app-automate/upload" \
-  -F "file=@/path/to/YourApp.apk"
+  -F "file=@/path/to/YourApp.ipa"
 ```
 
 Response: `{"app_url":"bs://<app_id>"}`
