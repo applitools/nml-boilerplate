@@ -2,28 +2,30 @@ import 'dotenv/config';
 import { Eyes } from '@applitools/eyes-webdriverio';
 
 const caps = Eyes.setMobileCapabilities({
-  platformName: 'iOS',
+  platformName: 'Android',
   'appium:app': process.env.APP_ID,
-  'appium:deviceName': process.env.DEVICE_NAME || 'iPhone 14',
-  'appium:platformVersion': process.env.PLATFORM_VERSION || '17',
-  'appium:automationName': 'XCUITest',
+  'appium:appPackage': process.env.APP_PACKAGE,
+  'appium:appActivity': process.env.APP_ACTIVITY,
+  'appium:deviceName': process.env.DEVICE_NAME || 'Samsung Galaxy S23',
+  'appium:platformVersion': process.env.PLATFORM_VERSION || '13',
+  'appium:automationName': 'UiAutomator2',
   'appium:noReset': false,
   'appium:newCommandTimeout': 300,
 }, process.env.APPLITOOLS_API_KEY);
 
-delete caps['appium:optionalIntentArguments'];
+delete caps['appium:processArguments'];
 
 caps['bstack:options'] = {
   userName: process.env.BROWSERSTACK_USERNAME,
   accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
   projectName: 'Applitools-NML',
-  buildName: 'Applitools-iOS-NML-Build',
-  sessionName: 'Applitools-iOS-NML-Test',
+  buildName: 'Applitools-Android-NML-Build',
+  sessionName: 'Applitools-Android-NML-Test',
 };
 
 export const config = {
 
-  specs: ['./test/specs/ios/app.ios.test.js'],
+  specs: ['./test/specs/android/app.android.test.js'],
 
   maxInstances: 1,
 
