@@ -1,5 +1,5 @@
 {
-  "name": "typescript-wdio-appium-nml-ios-saucelabs",
+  "name": "typescript-wdio-appium-nml-ios-multi-device-saucelabs",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for ios on SauceLabs (TypeScript)",
   "scripts": { "test": "wdio run ./wdio.ios.saucelabs.conf.ts" },

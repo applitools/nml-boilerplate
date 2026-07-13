@@ -8,10 +8,11 @@ describe('App NML - SauceLabs', () => {
     const config = new Configuration();
     config.setUseDom(true);
     config.setSendDom(true);
+    config.addMultiDeviceTarget("iPhone 11 Pro", "iPhone 13");
     eyes.setConfiguration(config);
 
     eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
-    eyes.setBatch(new BatchInfo('TS SauceLabs | NML | iOS Boilerplate'));
+    eyes.setBatch(new BatchInfo('TS SauceLabs | NML | iOS Boilerplate | Multi Device'));
 
     // TODO: swap in your own app name/description here.
     await eyes.open(browser, 'SauceLabs iOS App', 'iOS App Validation');
