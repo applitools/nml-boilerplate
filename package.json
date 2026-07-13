@@ -1,8 +1,8 @@
 {
-  "name": "typescript-wdio-appium-nml-ios-multi-device-local",
+  "name": "typescript-wdio-appium-nml-android-local",
   "version": "1.0.0",
-  "description": "WDIO + Applitools NML boilerplate for ios on Local (TypeScript)",
-  "scripts": { "test": "wdio run ./wdio.ios.local.conf.ts" },
+  "description": "WDIO + Applitools NML boilerplate for android on Local (TypeScript)",
+  "scripts": { "test": "wdio run ./wdio.android.local.conf.ts" },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "@wdio/cli": "^9.27.1",
