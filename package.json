@@ -1,10 +1,10 @@
 {
-  "name": "javascript-wdio-appium-nml-ios-multi-device-lambdatest",
+  "name": "javascript-wdio-appium-nml-android-lambdatest",
   "type": "module",
   "version": "1.0.0",
-  "description": "WDIO + Applitools NML boilerplate for ios on LambdaTest",
+  "description": "WDIO + Applitools NML boilerplate for android on LambdaTest",
   "scripts": {
-    "test": "wdio run ./wdio.ios.lambdatest.conf.js"
+    "test": "wdio run ./wdio.android.lambdatest.conf.js"
   },
   "devDependencies": {
     "@wdio/cli": "^9.29.1",
