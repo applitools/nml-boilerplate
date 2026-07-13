@@ -2,22 +2,24 @@ import 'dotenv/config';
 import { ConfigurationPlain, Eyes } from '@applitools/eyes-webdriverio';
 
 const caps = Eyes.setMobileCapabilities<Record<string, unknown>>({
-  platformName: 'iOS',
+  platformName: 'Android',
   'appium:app': process.env.APP_ID,
-  'appium:deviceName': process.env.DEVICE_NAME || 'iPhone 14',
-  'appium:platformVersion': process.env.PLATFORM_VERSION || '17',
-  'appium:automationName': 'XCUITest',
+  'appium:appPackage': process.env.APP_PACKAGE,
+  'appium:appActivity': process.env.APP_ACTIVITY,
+  'appium:deviceName': process.env.DEVICE_NAME || 'Samsung Galaxy S23',
+  'appium:platformVersion': process.env.PLATFORM_VERSION || '13',
+  'appium:automationName': 'UiAutomator2',
   'appium:noReset': false,
   'appium:newCommandTimeout': 300,
 }, process.env.APPLITOOLS_API_KEY as ConfigurationPlain);
 
-delete caps['appium:optionalIntentArguments'];
+delete caps['appium:processArguments'];
 
 caps['sauce:options'] = {
   username: process.env.SAUCE_USERNAME,
   accessKey: process.env.SAUCE_ACCESS_KEY,
-  build: 'Applitools-iOS-NML-Build',
-  name: 'Applitools-iOS-NML-Test',
+  build: 'Applitools-Android-NML-Build',
+  name: 'Applitools-Android-NML-Test',
   appiumVersion: 'latest',
 };
 
@@ -25,7 +27,7 @@ const region = process.env.SAUCE_REGION || 'us-west-1';
 
 export const config: WebdriverIO.Config = {
 
-  specs: ['./test/specs/ios/app.ios.test.ts'],
+  specs: ['./test/specs/android/app.android.test.ts'],
 
   maxInstances: 1,
 
