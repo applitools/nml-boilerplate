@@ -1,5 +1,5 @@
 {
-  "name": "javascript-wdio-appium-nml-android-browserstack",
+  "name": "javascript-wdio-appium-nml-android-multi-device-browserstack",
   "type": "module",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for android on BrowserStack",
