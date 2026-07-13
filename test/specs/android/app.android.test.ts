@@ -8,10 +8,11 @@ describe('App NML - Perfecto', () => {
     const config = new Configuration();
     config.setUseDom(true);
     config.setSendDom(true);
+    config.addMultiDeviceTarget('Galaxy S25', 'Galaxy S25 Ultra', 'Pixel 9');
     eyes.setConfiguration(config);
 
     eyes.setApiKey(process.env.APPLITOOLS_API_KEY);
-    eyes.setBatch(new BatchInfo('TS Perfecto | NML | Android Boilerplate'));
+    eyes.setBatch(new BatchInfo('TS Perfecto | NML | Android Boilerplate | Multi Device'));
 
     // TODO: swap in your own app name/description here.
     await eyes.open(browser, 'Perfecto Android App', 'Android App Validation');

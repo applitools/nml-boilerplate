@@ -1,5 +1,5 @@
 {
-  "name": "typescript-wdio-appium-nml-android-perfecto",
+  "name": "typescript-wdio-appium-nml-android-multi-device-perfecto",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for android on Perfecto (TypeScript)",
   "scripts": { "test": "wdio run ./wdio.android.perfecto.conf.ts" },
