@@ -1,5 +1,5 @@
 {
-  "name": "javascript-wdio-appium-nml-android-saucelabs",
+  "name": "javascript-wdio-appium-nml-android-multi-device-saucelabs",
   "type": "module",
   "version": "1.0.0",
   "description": "WDIO + Applitools NML boilerplate for android on SauceLabs",
