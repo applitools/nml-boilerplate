@@ -1,19 +1,18 @@
-## Native Mobile Library
+## Native Mobile Library — Boilerplate
 
 Branches are named by test vendor/environment, then language, framework, and platform:
 
 ```
-<vendor-or-local>[-plug-and-play]/<language>-<framework>-<platform>[-multi-device]
+<vendor-or-local>/<language>-<framework>-<platform>[-multi-device]
 ```
 
 ### Boilerplate vs. Plug-and-Play
 
-Every combination below comes in two variants:
+This repository holds the **boilerplate** variants — plain vendor name, e.g. `browserstack/javascript-wdio-appium-ios`. Each is a starter template with no application bundled: add your credentials and point `APP_ID` (and, for Android, `APP_PACKAGE`/`APP_ACTIVITY`) at your own app, then adapt the test to your own screens.
 
-- **Boilerplate** (plain vendor name, e.g. `browserstack/javascript-wdio-appium-ios`) — a starter template with no application bundled. Add your credentials and point `APP_ID` (and, for Android, `APP_PACKAGE`/`APP_ACTIVITY`) at your own app, then adapt the test to your own screens.
-- **Plug-and-play** (`-plug-and-play` suffix on the vendor, e.g. `browserstack-plug-and-play/javascript-wdio-appium-ios`) — add your credentials to `.env` (or as environment variables) and you're ready to go against the sample application already wired in.
+The **plug-and-play** variants (`-plug-and-play` suffix on the vendor, e.g. `browserstack-plug-and-play/javascript-wdio-appium-ios`) — where you just add credentials to `.env` and run against a sample app already wired in — live in a separate repo: **[applitools/nml-plug-and-play](https://github.com/applitools/nml-plug-and-play)**.
 
-> **Exception:** `lambdatest/java-appium-ios`, `lambdatest/java-appium-ios-multi-device`, `lambdatest/java-appium-android`, and `lambdatest/java-appium-android-multi-device` don't exist yet — only their `lambdatest-plug-and-play/...` counterparts do; the boilerplate variant hasn't been built for these four.
+> **Note:** `lambdatest/java-appium-ios`, `lambdatest/java-appium-ios-multi-device`, `lambdatest/java-appium-android`, and `lambdatest/java-appium-android-multi-device` don't exist as boilerplate — only their `lambdatest-plug-and-play/...` counterparts do (in the nml-plug-and-play repo).
 
 ### Sample Applications
 
@@ -22,15 +21,13 @@ Sample applications (iOS Native and Android Native) are available in the **main*
 - `static_instrumented_sample_application/` — ready to use as-is. These apps are already statically instrumented with the Applitools SDK, so no extra setup is needed.
 - `SampleApplication/Applitcation1-accessibility-app` and `SampleApplication/Application2-analyticsx-app` — Accessibility and AnalyticsX sample apps (iOS Native, Android Native) that must be dynamically instrumented before use. See the [iOS](https://applitools.com/docs/eyes/concepts/best-practices/native-mobile-library#ios_dynamic) and [Android](https://applitools.com/docs/eyes/concepts/best-practices/native-mobile-library#android_dynamic) dynamic instrumentation guides.
 
+These are provided as a reference for wiring your own app into the boilerplate tests; unlike the plug-and-play repo, the boilerplate branches themselves don't point at these sample apps by default.
+
 ### Java Appium — iOS
 
   local/java-appium-ios
 
   local/java-appium-ios-multi-device
-
-  lambdatest/java-appium-ios
-
-  lambdatest/java-appium-ios-multi-device
 
   perfecto/java-appium-ios
 
@@ -49,10 +46,6 @@ Sample applications (iOS Native and Android Native) are available in the **main*
   local/java-appium-android
 
   local/java-appium-android-multi-device
-
-  lambdatest/java-appium-android
-
-  lambdatest/java-appium-android-multi-device
 
   perfecto/java-appium-android
 
@@ -106,6 +99,10 @@ Sample applications (iOS Native and Android Native) are available in the **main*
 
   saucelabs/javascript-wdio-appium-android-multi-device
 
+  browserstack/javascript-wdio-appium-android
+
+  browserstack/javascript-wdio-appium-android-multi-device
+
 ### TypeScript WDIO Appium — iOS
 
   local/typescript-wdio-appium-ios
@@ -146,6 +143,18 @@ Sample applications (iOS Native and Android Native) are available in the **main*
 
   saucelabs/typescript-wdio-appium-android-multi-device
 
+  browserstack/typescript-wdio-appium-android
+
+  browserstack/typescript-wdio-appium-android-multi-device
+
 ### Maestro
 
+  maestro-local/ios-nml-workaround
+
 Maestro does not support direct Eyes SDK integration or Appium, so its NML support is a workaround built on the Maestro runner rather than a native integration like the suites above.
+
+### Native (no Appium/NML)
+
+  espresso-local/android-test-xmllayout — Android Espresso test against an XML-layout app.
+
+  xcuitest-local/ios-uikit — iOS XCUITest against a UIKit app.
