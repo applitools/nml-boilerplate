@@ -158,3 +158,5 @@ Maestro does not support direct Eyes SDK integration or Appium, so its NML suppo
   espresso-local/android-test-xmllayout — Android Espresso test against an XML-layout app.
 
   xcuitest-local/ios-uikit — iOS XCUITest against a UIKit app.
+
+> These three branches (Maestro, Espresso, XCUITest) don't have a boilerplate/plug-and-play split — they're kept identically in both this repo and [applitools/nml-plug-and-play](https://github.com/applitools/nml-plug-and-play).
