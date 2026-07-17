@@ -27,7 +27,7 @@ const region = process.env.SAUCE_REGION || 'us-west-1';
 
 export const config: WebdriverIO.Config = {
 
-  specs: ['./test/specs/android/app.android.test.ts'],
+  specs: ['./test/specs/android/app_nml_multidevice.android.test.ts'],
 
   maxInstances: 1,
 
