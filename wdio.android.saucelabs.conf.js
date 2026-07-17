@@ -27,7 +27,7 @@ const region = process.env.SAUCE_REGION || 'us-west-1';
 
 export const config = {
 
-  specs: ['./test/specs/android/app.android.test.js'],
+  specs: ['./test/specs/android/app_nml_multidevice.android.test.js'],
 
   maxInstances: 1,
 
