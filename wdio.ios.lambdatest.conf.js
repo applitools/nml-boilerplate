@@ -36,7 +36,7 @@ caps['lt:options'] = ltOptions;
 
 export const config = {
 
-  specs: ['./test/specs/ios/app.ios.test.js'],
+  specs: ['./test/specs/ios/app_nml_multidevice.ios.test.js'],
 
   maxInstances: 1,
 
