@@ -15,7 +15,7 @@ delete caps['appium:optionalIntentArguments'];
 
 export const config: WebdriverIO.Config = {
 
-  specs: ['./test/specs/ios/app.ios.test.ts'],
+  specs: ['./test/specs/ios/app_nml_multidevice.ios.test.ts'],
 
   maxInstances: 1,
 
