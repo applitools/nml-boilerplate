@@ -38,7 +38,7 @@ caps['lt:options'] = ltOptions;
 
 export const config = {
 
-  specs: ['./test/specs/android/app.android.test.js'],
+  specs: ['./test/specs/android/app_nml_multidevice.android.test.js'],
 
   maxInstances: 1,
 
