@@ -17,7 +17,7 @@ delete caps['appium:processArguments'];
 
 export const config: WebdriverIO.Config = {
 
-  specs: ['./test/specs/android/app.android.test.ts'],
+  specs: ['./test/specs/android/app_nml_multidevice.android.test.ts'],
 
   maxInstances: 1,
 
