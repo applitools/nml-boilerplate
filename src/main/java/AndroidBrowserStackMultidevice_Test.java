@@ -60,7 +60,6 @@ public class AndroidBrowserStackMultidevice_Test {
 
         // ── NML ─────────────────────────────────────────────────────────────
         Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
-        capabilities.setCapability("appium:processArguments", (Object) null);
 
         // ── bstack:options ──────────────────────────────────────────────────
         Map<String, Object> bstackOptions = new HashMap<>();
