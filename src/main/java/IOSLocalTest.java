@@ -30,6 +30,7 @@ public class IOSLocalTest {
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
+        String serverUrl       = System.getenv("APPLITOOLS_SERVER_URL"); // optional; defaults to Applitools public cloud if unset
         String deviceName      = System.getenv("DEVICE_NAME");
         String platformVersion = System.getenv("PLATFORM_VERSION");
 
@@ -48,7 +49,7 @@ public class IOSLocalTest {
 
         // ── NML ─────────────────────────────────────────────────────────────
         // No vendor options object for a local Appium server.
-        Eyes.setMobileCapabilities(capabilities, apiKey);
+        Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
 
         // ── Driver ──────────────────────────────────────────────────────────
         IOSDriver driver = new IOSDriver(
@@ -65,6 +66,9 @@ public class IOSLocalTest {
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
+        if (serverUrl != null) {
+            config.setServerUrl(serverUrl);
+        }
         config.setBatch(new BatchInfo("Java Local | NML | iOS Boilerplate"));
         config.setUseDom(true);
         config.setSendDom(true);
