@@ -36,6 +36,7 @@ public class AndroidSauceLabsTest {
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
+        String serverUrl       = System.getenv("APPLITOOLS_SERVER_URL"); // optional; defaults to Applitools public cloud if unset
         String sauceUsername  = System.getenv("SAUCE_USERNAME");
         String sauceAccessKey = System.getenv("SAUCE_ACCESS_KEY");
         String sauceRegion    = java.util.Optional.ofNullable(System.getenv("SAUCE_REGION")).orElse("us-west-1");
@@ -58,8 +59,7 @@ public class AndroidSauceLabsTest {
         System.out.println("Capabilities set");
 
         // ── NML ─────────────────────────────────────────────────────────────
-        Eyes.setMobileCapabilities(capabilities, apiKey);
-        capabilities.setCapability("appium:processArguments", (Object) null);
+        Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
 
         // ── sauce:options ───────────────────────────────────────────────────
         Map<String, Object> sauceOptions = new HashMap<>();
@@ -86,6 +86,9 @@ public class AndroidSauceLabsTest {
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
+        if (serverUrl != null) {
+            config.setServerUrl(serverUrl);
+        }
         config.setBatch(new BatchInfo("Java SauceLabs | NML | Android Boilerplate"));
         config.setUseDom(true);
         config.setSendDom(true);
