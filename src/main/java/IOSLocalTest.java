@@ -49,7 +49,6 @@ public class IOSLocalTest {
         // ── NML ─────────────────────────────────────────────────────────────
         // No vendor options object for a local Appium server.
         Eyes.setMobileCapabilities(capabilities, apiKey);
-        capabilities.setCapability("appium:optionalIntentArguments", (Object) null);
 
         // ── Driver ──────────────────────────────────────────────────────────
         IOSDriver driver = new IOSDriver(
