@@ -54,7 +54,6 @@ public class IOSBrowserStackMultidevice_Test {
 
         // ── NML ─────────────────────────────────────────────────────────────
         Eyes.setMobileCapabilities(capabilities, apiKey);
-        capabilities.setCapability("appium:optionalIntentArguments", (Object) null);
 
         // ── bstack:options ──────────────────────────────────────────────────
         Map<String, Object> bstackOptions = new HashMap<>();
