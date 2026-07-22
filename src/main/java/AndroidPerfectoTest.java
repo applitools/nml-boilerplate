@@ -59,7 +59,6 @@ public class AndroidPerfectoTest {
 
         // ── NML ─────────────────────────────────────────────────────────────
         Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
-        capabilities.setCapability("appium:processArguments", (Object) null);
 
         // ── perfecto:options ────────────────────────────────────────────────
         Map<String, Object> perfectoOptions = new HashMap<>();
