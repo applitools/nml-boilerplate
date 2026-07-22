@@ -13,7 +13,6 @@ const caps = Eyes.setMobileCapabilities<Record<string, unknown>>({
   'appium:newCommandTimeout': 300,
 }, process.env.APPLITOOLS_API_KEY as ConfigurationPlain);
 
-delete caps['appium:processArguments'];
 
 caps['perfecto:options'] = {
   securityToken: process.env.PERFECTO_SECURITY_TOKEN,
