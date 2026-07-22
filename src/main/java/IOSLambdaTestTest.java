@@ -52,7 +52,6 @@ public class IOSLambdaTestTest {
 
         // ── NML ─────────────────────────────────────────────────────────────
         Eyes.setMobileCapabilities(capabilities, apiKey);
-        capabilities.setCapability("appium:optionalIntentArguments", (Object) null);
 
         // ── lt:options ──────────────────────────────────────────────────────
         Map<String, Object> ltOptions = new HashMap<>();
@@ -67,6 +66,15 @@ public class IOSLambdaTestTest {
         ltOptions.put("visual",     "true");
         ltOptions.put("network",   "true");
         ltOptions.put("w3c",        "true");
+
+        // Applitools injects processArguments on iOS; LambdaTest requires it inside lt:options.
+        Object processArguments = capabilities.getCapability("appium:processArguments");
+        if (processArguments != null) {
+            ltOptions.put("processArguments", processArguments);
+            capabilities.setCapability("appium:processArguments", (Object) null);
+        }
+        // Android cap not needed for iOS
+        capabilities.setCapability("appium:optionalIntentArguments", (Object) null);
 
         capabilities.setCapability("lt:options", ltOptions);
 
