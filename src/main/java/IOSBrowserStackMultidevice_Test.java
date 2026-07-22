@@ -34,6 +34,7 @@ public class IOSBrowserStackMultidevice_Test {
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
+        String serverUrl       = System.getenv("APPLITOOLS_SERVER_URL"); // optional; defaults to Applitools public cloud if unset
         String browserStackUsername = System.getenv("BROWSERSTACK_USERNAME");
         String browserStackAccessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
         String deviceName      = System.getenv("DEVICE_NAME");
@@ -53,7 +54,7 @@ public class IOSBrowserStackMultidevice_Test {
         System.out.println("Capabilities set");
 
         // ── NML ─────────────────────────────────────────────────────────────
-        Eyes.setMobileCapabilities(capabilities, apiKey);
+        Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
 
         // ── bstack:options ──────────────────────────────────────────────────
         Map<String, Object> bstackOptions = new HashMap<>();
@@ -80,6 +81,9 @@ public class IOSBrowserStackMultidevice_Test {
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
+        if (serverUrl != null) {
+            config.setServerUrl(serverUrl);
+        }
         config.setBatch(new BatchInfo("Java BrowserStack | NML | iOS Boilerplate | Multi Device"));
         config.setUseDom(true);
         config.setSendDom(true);
