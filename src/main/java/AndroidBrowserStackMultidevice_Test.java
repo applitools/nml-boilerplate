@@ -37,6 +37,7 @@ public class AndroidBrowserStackMultidevice_Test {
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
+        String serverUrl       = System.getenv("APPLITOOLS_SERVER_URL"); // optional; defaults to Applitools public cloud if unset
         String browserStackUsername = System.getenv("BROWSERSTACK_USERNAME");
         String browserStackAccessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
         String deviceName      = System.getenv("DEVICE_NAME");
@@ -58,7 +59,7 @@ public class AndroidBrowserStackMultidevice_Test {
         System.out.println("Capabilities set");
 
         // ── NML ─────────────────────────────────────────────────────────────
-        Eyes.setMobileCapabilities(capabilities, apiKey);
+        Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
         capabilities.setCapability("appium:processArguments", (Object) null);
 
         // ── bstack:options ──────────────────────────────────────────────────
@@ -86,6 +87,9 @@ public class AndroidBrowserStackMultidevice_Test {
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
+        if (serverUrl != null) {
+            config.setServerUrl(serverUrl);
+        }
         config.setBatch(new BatchInfo("Java BrowserStack | NML | Android Boilerplate | Multi Device"));
         config.setUseDom(true);
         config.setSendDom(true);
