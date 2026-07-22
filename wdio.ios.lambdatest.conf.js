@@ -30,7 +30,6 @@ if (processArguments != null) {
   ltOptions.processArguments = processArguments;
   delete caps['appium:processArguments'];
 }
-delete caps['appium:optionalIntentArguments'];
 
 caps['lt:options'] = ltOptions;
 
