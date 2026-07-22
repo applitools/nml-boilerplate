@@ -11,7 +11,6 @@ const caps = Eyes.setMobileCapabilities<Record<string, unknown>>({
   'appium:newCommandTimeout': 300,
 }, process.env.APPLITOOLS_API_KEY as ConfigurationPlain);
 
-delete caps['appium:optionalIntentArguments'];
 
 caps['sauce:options'] = {
   username: process.env.SAUCE_USERNAME,
