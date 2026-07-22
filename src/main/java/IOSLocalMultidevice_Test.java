@@ -31,6 +31,7 @@ public class IOSLocalMultidevice_Test {
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
+        String serverUrl       = System.getenv("APPLITOOLS_SERVER_URL"); // optional; defaults to Applitools public cloud if unset
         String deviceName      = System.getenv("DEVICE_NAME");
         String platformVersion = System.getenv("PLATFORM_VERSION");
 
@@ -49,7 +50,7 @@ public class IOSLocalMultidevice_Test {
 
         // ── NML ─────────────────────────────────────────────────────────────
         // No vendor options object for a local Appium server.
-        Eyes.setMobileCapabilities(capabilities, apiKey);
+        Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
 
         // ── Driver ──────────────────────────────────────────────────────────
         IOSDriver driver = new IOSDriver(
@@ -66,6 +67,9 @@ public class IOSLocalMultidevice_Test {
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
+        if (serverUrl != null) {
+            config.setServerUrl(serverUrl);
+        }
         config.setBatch(new BatchInfo("Java Local | NML | iOS Boilerplate | Multi Device"));
         config.setUseDom(true);
         config.setSendDom(true);
