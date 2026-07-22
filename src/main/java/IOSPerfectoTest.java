@@ -53,7 +53,6 @@ public class IOSPerfectoTest {
 
         // ── NML ─────────────────────────────────────────────────────────────
         Eyes.setMobileCapabilities(capabilities, apiKey);
-        capabilities.setCapability("appium:optionalIntentArguments", (Object) null);
 
         // ── perfecto:options ────────────────────────────────────────────────
         Map<String, Object> perfectoOptions = new HashMap<>();
