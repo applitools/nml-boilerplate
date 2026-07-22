@@ -36,6 +36,7 @@ public class AndroidLambdaTestTest {
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
+        String serverUrl       = System.getenv("APPLITOOLS_SERVER_URL"); // optional; defaults to Applitools public cloud if unset
         String ltUsername      = System.getenv("LT_USERNAME");
         String ltAccessKey     = System.getenv("LT_ACCESS_KEY");
         String deviceName      = System.getenv("DEVICE_NAME");
@@ -57,7 +58,7 @@ public class AndroidLambdaTestTest {
         System.out.println("Capabilities set");
 
         // ── NML ─────────────────────────────────────────────────────────────
-        Eyes.setMobileCapabilities(capabilities, apiKey);
+        Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
 
         // ── lt:options ──────────────────────────────────────────────────────
         Map<String, Object> ltOptions = new HashMap<>();
@@ -98,6 +99,9 @@ public class AndroidLambdaTestTest {
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
+        if (serverUrl != null) {
+            config.setServerUrl(serverUrl);
+        }
         config.setBatch(new BatchInfo("Java LambdaTest | NML | Android Boilerplate"));
         config.setUseDom(true);
         config.setSendDom(true);
