@@ -56,7 +56,6 @@ public class AndroidLocalMultidevice_Test {
         // ── NML ─────────────────────────────────────────────────────────────
         // No vendor options object for a local Appium server.
         Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
-        capabilities.setCapability("appium:processArguments", (Object) null);
 
         // ── Driver ──────────────────────────────────────────────────────────
         AndroidDriver driver = new AndroidDriver(
