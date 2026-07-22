@@ -36,6 +36,7 @@ public class AndroidPerfectoTest {
 
         // ── Credentials ─────────────────────────────────────────────────────
         String apiKey          = System.getenv("APPLITOOLS_API_KEY");
+        String serverUrl       = System.getenv("APPLITOOLS_SERVER_URL"); // optional; defaults to Applitools public cloud if unset
         String perfectoCloudName = System.getenv("PERFECTO_CLOUD_NAME");
         String perfectoToken     = System.getenv("PERFECTO_SECURITY_TOKEN");
         String deviceName      = System.getenv("DEVICE_NAME");
@@ -57,7 +58,7 @@ public class AndroidPerfectoTest {
         System.out.println("Capabilities set");
 
         // ── NML ─────────────────────────────────────────────────────────────
-        Eyes.setMobileCapabilities(capabilities, apiKey);
+        Eyes.setMobileCapabilities(capabilities, apiKey, serverUrl);
         capabilities.setCapability("appium:processArguments", (Object) null);
 
         // ── perfecto:options ────────────────────────────────────────────────
@@ -81,6 +82,9 @@ public class AndroidPerfectoTest {
 
         Configuration config = new Configuration();
         config.setApiKey(apiKey);
+        if (serverUrl != null) {
+            config.setServerUrl(serverUrl);
+        }
         config.setBatch(new BatchInfo("Java Perfecto | NML | Android Boilerplate"));
         config.setUseDom(true);
         config.setSendDom(true);
