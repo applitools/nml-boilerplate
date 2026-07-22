@@ -74,8 +74,6 @@ public class IOSLambdaTestMultidevice_Test {
             ltOptions.put("processArguments", processArguments);
             capabilities.setCapability("appium:processArguments", (Object) null);
         }
-        // Android cap not needed for iOS
-        capabilities.setCapability("appium:optionalIntentArguments", (Object) null);
 
         capabilities.setCapability("lt:options", ltOptions);
 
