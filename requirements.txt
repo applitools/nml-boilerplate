@@ -1,0 +1,2 @@
+eyes-selenium==6.5.21
+Appium-Python-Client>=5.0
